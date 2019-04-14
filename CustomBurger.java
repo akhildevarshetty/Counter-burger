@@ -1,30 +1,29 @@
-package composite;
+package composite; 
 
 import java.text.DecimalFormat;
 
-public class CustomBurger extends Composite 
+public class CustomBurger extends Composite
 {
-    PriceDecorator priceDecorator = null;
-
-    public CustomBurger(String d) 
+    PriceDecorator decorator = null ;
+    
+    public CustomBurger ( String d )
     {
-        super(d);
+        super(d) ;
     }
-
-    public void setDecorator(PriceDecorator decorator)
+    
+    public void setDecorator( PriceDecorator p )
     {
-        this.priceDecorator= decorator;
+        this.decorator = p ;
     }
-
-    public void printDescription()
-    {
-        DecimalFormat dec = new DecimalFormat("0.00");
-        System.out.println(super.description = dec.format(priceDecorator.getPrice()));
-
-        for(Component obj : components)
+    
+    public void printDescription() {
+        DecimalFormat fmt = new DecimalFormat("0.00");
+        System.out.println( " " + description + " " + fmt.format(decorator.getPrice()) );
+        for (Component obj  : components)
         {
             obj.printDescription();
         }
-
     }
 }
+
+       

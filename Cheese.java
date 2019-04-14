@@ -1,35 +1,32 @@
-package composite;
+package composite; 
 
-public class Cheese extends LeafDecorator 
+public class Cheese extends LeafDecorator
 {
-    private String[] size;
-
-    public Cheese(String c, double p)
+    private String[] options ;
+    
+    
+    public Cheese( String d )
     {
-        super(c,p);
+        super(d) ;
     }
-
-    //1st Cheese is for free, extra cheese @1.00
-    public void setOptions( String[] size )
+    
+    // 1 cheese free, extra cheese +1.00
+    public void setOptions( String[] options )
     {
-        this.size = size; 
-        
-        if ( size.length > 1 )
-        	this.price= this.price+((size.length-1) * 1.00) ;
+        this.options = options ;
+        if ( options.length > 1 )
+            this.price += (options.length-1) * 1.00 ;
     }
-
-    public String getDescription()
+    
+    public String getDescription() 
     {
-        String description = "" ;
-        for ( int i = 0; i<size.length; i++ )
+        String desc = "   " ;
+        for ( int i = 0; i<options.length; i++ )
         {
-            if (i>0) 
-            	description += " + " + size[i] ; 
-            else 
-            	description = size[i] ;
-        }
-        return description ;
+            if (i>0) desc += " + " + options[i] ;
+            else desc = options[i] ;
+        }        
+        return desc ;
     }
-
+    
 }
-

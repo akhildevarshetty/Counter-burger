@@ -1,38 +1,32 @@
-package composite;
+package composite; 
 
-public class Sauce extends LeafDecorator 
+public class Sauce extends LeafDecorator
 {
-    private String[] size;
-
-    public Sauce( String s, double p )
-
+    private String[] options ;
+    
+    
+    public Sauce( String d )
     {
-    	super(s,p);
+        super(d) ;
     }
-
-    //1st Sauce is for free, extra @0.75 for each
-    public void setOptions(String[] size)
+    
+    // 1 sauce free, extra +.75
+    public void setOptions( String[] options )
     {
-        this.size = size;
-        
-        if (size.length>1)
+        this.options = options ;
+        if ( options.length > 1 )
+            this.price += (options.length-1) * 0.75 ;
+    }
+    
+    public String getDescription() 
+    {
+        String desc = "   " ;
+        for ( int i = 0; i<options.length; i++ )
         {
-        	this.price=this.price+((size.length-1) * 0.75);
-        }
-       
+            if (i>0) desc += " + " + options[i] ;
+            else desc = options[i] ;
+        }        
+        return desc ;
     }
-
-    public String getDescription()
-    {
-        String descrpition = "";
-        for (int i = 0; i<size.length; i++)
-        {
-            if(i>0)
-            	descrpition += " + " + size[i];
-            else 
-            	descrpition = size[i];
-        }
-        return descrpition;
-    }
-
+    
 }

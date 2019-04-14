@@ -1,43 +1,40 @@
-package composite;
+package composite; 
+
+//import java.text.DecimalFormat;
+
 
 public abstract class LeafDecorator extends Leaf implements PriceDecorator
-{
-    protected PriceDecorator wrap ;
-
-    public LeafDecorator (String l, double p) 
-    {
-        super(l,p);
-        this.wrap=null ;
-    }
-    
-    abstract public String getDescription() ;
-    
-    abstract public void setOptions( String[] opt) ;
-    
-    public void wrapDecorator(PriceDecorator wrap)
-    {
-        this.wrap = wrap ;
+{  
+   PriceDecorator wrapped ;
+   
+   public LeafDecorator( String d ) {
+       super( d ) ;
+       this.wrapped = null ;
     }
 
-    public double getPrice() {
-
-        if (wrap == null)
+   public void wrapDecorator( PriceDecorator w ) 
+   {
+       this.wrapped = w ;
+   }
+    
+   public Double getPrice() {
+        if (wrapped == null )
         {
             return price ;
         }
-        else
+        else 
         {
-            return price + wrap.getPrice() ;
+            return price + wrapped.getPrice() ;
         }
-
     }
 
- 
-    public void printDescription() 
-    { 
-    	System.out.println( getDescription() ) ;
-
+    abstract public void setOptions( String[] options ) ; 
+    abstract public String getDescription() ;
+        
+    @Override
+    public void printDescription() {
+        System.out.println( "    " + getDescription() ) ;
     }
-
+    
+    
 }
-

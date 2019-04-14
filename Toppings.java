@@ -1,35 +1,32 @@
-package composite;
+package composite; 
 
 public class Toppings extends LeafDecorator
 {
-    private String[] size;
-
-    public Toppings(String t, double p)
+    private String[] options ;
+    
+    
+    public Toppings( String d )
     {
-        super(t,p);
+        super(d) ;
     }
-
-    //4 Toppings are free, extra @0.75 for each
-    public void setOptions(String[] size)
+    
+    // 4 toppings free, extra +.75
+    public void setOptions( String[] options )
     {
-        this.size = size;
-        
-        if ( size.length > 4 )
-            this.price=this.price+((size.length-4) * 0.75);
+        this.options = options ;
+        if ( options.length > 4 )
+            this.price += (options.length-4) * 0.75 ;
     }
-
-    public String getDescription()
+    
+    public String getDescription() 
     {
-        String description = "" ;
-        for ( int i = 0; i<size.length; i++ )
+        String desc = "   " ;
+        for ( int i = 0; i<options.length; i++ )
         {
-            if(i>0)
-            	description += " + " + size[i]; 
-            else 
-            	description = size[i];
-        }
-        return description;
+            if (i>0) desc += " + " + options[i] ;
+            else desc = options[i] ;
+        }        
+        return desc ;
     }
-
+    
 }
-

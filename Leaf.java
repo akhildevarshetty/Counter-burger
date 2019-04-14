@@ -1,4 +1,4 @@
-package composite;
+package composite;  
 
 import java.text.DecimalFormat;
 
@@ -14,23 +14,15 @@ public class Leaf implements Component {
         price = p ;
     }
     
-//    public Leaf ( String d )
-//    {
-//        description = d ;
-//        price = 0.00 ;
-//    }
+    public Leaf ( String d ) 
+    {
+        description = d ;
+        price = 0.0 ;
+    }
     
     public void printDescription() {
-    	if(description=="Crispy Onion Strings" || description=="The Purist") 
-    	{
-    		DecimalFormat fmt = new DecimalFormat("0.00");
-            System.out.println( description +" "+fmt.format(price)); 	
-    	}
-    	else
-    	{
-    		System.out.print( description +" + ");
-    	}
-        
+        DecimalFormat fmt = new DecimalFormat("0.00");
+        System.out.println( " " + description + " " + fmt.format(price) ) ;
     }
 
     public void addChild(Component c) {
@@ -47,3 +39,4 @@ public class Leaf implements Component {
 	}
 	 
 }
+ 

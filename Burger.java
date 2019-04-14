@@ -1,56 +1,36 @@
-package composite;
+package composite; 
 
-public class Burger extends LeafDecorator 
+public class Burger extends LeafDecorator
 {
-    private String[] size;
-
-    public Burger( String b, double p)
+    private String[] options ;
+    
+    
+    public Burger( String d )
     {
-        super(b,p);
+        super(d) ;
     }
-
-    public void setSizeOptions(String[] size)
-
+    
+    public void setOptions( String[] options )
     {
-        this.size = size ;
-        for (String type:size)
+        this.options = options ;
+        for ( int i = 0; i<options.length; i++ )
         {
-        	switch(type)
-        	{
-        		case "1/3lb.": this.price=this.price+9.50;
-        					break;
-        					
-        		case "2/3lb.": this.price=this.price+11.50;
-							break;
-				
-        		case "1lb.": this.price=this.price+13.50;
-							break;
-        		case "In A Bowl": this.price=this.price+1.50;
-							break;
-        	}
+            if ( "1/3lb.".equals(options[i]) ) this.price += 9.50 ;
+            if ( "2/3lb.".equals(options[i]) ) this.price += 11.50 ;
+            if ( "1lb.".equals(options[i]) ) this.price += 15.50 ;
+            if ( "In A Bowl".equals(options[i]) ) this.price += 1.50 ;
         }
     }
-
-    public String getDescription()
-
+    
+    public String getDescription() 
     {
-        String description = "" ;
-        for ( int i = 0; i<size.length; i++ )
+        String desc = "   " ;
+        for ( int i = 0; i<options.length; i++ )
         {
-            if (i>0) 
-            	description += " + " + size[i] ; 
-            else 
-            	description = size[i] ;
-        }
-        return description ;
+            if (i>0) desc += " + " + options[i] ;
+            else desc = options[i] ;
+        }        
+        return desc ;
     }
-
-	@Override
-	public void setOptions(String[] opt) 
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
+    
 }
-

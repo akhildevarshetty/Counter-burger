@@ -1,4 +1,4 @@
-package composite;
+package composite;    
 
 import java.util.ArrayList;
 
@@ -6,7 +6,6 @@ public class Composite implements Component {
 
     protected ArrayList<Component> components = new ArrayList<Component>()  ;
     protected String description ;
-    
     
     public Composite ( String d )
     {
@@ -22,7 +21,7 @@ public class Composite implements Component {
     }
 
 	public void addChild(Component c) {
-        components.add(c);
+        components.add( c ) ;
 	}
 	 
 	public void removeChild(Component c) {
@@ -32,4 +31,6 @@ public class Composite implements Component {
 	public Component getChild(int i) {
 	    return components.get( i ) ;
 	}
+	 
 }
+ 
